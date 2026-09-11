@@ -198,7 +198,7 @@ public interface TradeTrackerConfig extends Config
 	)
 	default int maxHistoryCount()
 	{
-		return 1024;
+		return 256;
 	}
 
 	@ConfigItem(

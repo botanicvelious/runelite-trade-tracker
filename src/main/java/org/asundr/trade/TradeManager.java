@@ -53,7 +53,7 @@ import java.util.regex.Pattern;
 @Slf4j
 public class TradeManager
 {
-	public final static int MAX_HISTORY_COUNT = 512;
+	public final static int MAX_HISTORY_COUNT = 1024;
 
 	private static final String MESSAGE_ACCEPTED_TRADE = "Accepted trade.";
 	private static final String MESSAGE_DECLINED_TRADE = "Other player declined trade.";
