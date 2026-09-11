@@ -32,6 +32,7 @@ public final class ConfigKey
 	public static final String AUTO_FILTER_ON_TRADE = "autoFilterOnTrade";
 	public static final String AUTO_FILTER_OPENS_PANEL = "autoFilterOpensPanel";
 	public static final String SCREENSHOT_ON_TRADE = "screenshotOnTrade";
+	public static final String TOTAL_TYPE = "FilterTotalType";
 	public static final String MAX_HISTORY = "maxHistoryCount";
 	public static final String USE_24_HOUR_TIME = "use24HourTime";
 	public static final String DEFAULT_PRICE_TYPE = "defaultPriceType";

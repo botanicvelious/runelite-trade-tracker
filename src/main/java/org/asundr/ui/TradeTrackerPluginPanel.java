@@ -661,13 +661,28 @@ public class TradeTrackerPluginPanel extends PluginPanel
 
 	private void updateTotalPanel()
 	{
+		long sum;
+		String footerPrefix = "";
 
-		long sum = getTradeRecordPanels().stream()
-				.filter(TradeRecordPanel::isVisible)
-				.mapToLong(TradeRecordPanel::getPanelValue)
-				.sum();
+		if (CommonUtils.getConfig().getFilterTotalType()) {
+			sum = getTradeRecordPanels().stream()
+					.filter(TradeRecordPanel::isVisible)
+					.mapToLong(TradeRecordPanel::getPanelValue)
+					.sum();
 
-		final String footerPrefix = sum < 0 ? "you lost" : "you gained";
+			footerPrefix = sum < 0 ? "you lost" : "you gained";
+
+		} else
+		{
+			sum = getTradeRecordPanels().stream()
+					.filter(TradeRecordPanel::isVisible)
+					.mapToLong(TradeRecordPanel::getPanelValue)
+					.map(Math::abs)
+					.sum();
+
+			footerPrefix = "you traded";
+		}
+
 		filterTotalLabel = new QuantityLabel(sum, "<html>" + "In total " + footerPrefix + ": %s  <span style='color:#909090'>[#P]</span></html>", "%s");
 		filterTotal.removeAll();
 		filterTotal.add(filterTotalLabel);

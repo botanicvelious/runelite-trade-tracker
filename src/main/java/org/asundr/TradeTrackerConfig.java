@@ -132,6 +132,17 @@ public interface TradeTrackerConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = ConfigKey.TOTAL_TYPE,
+			name = "Show total as profit/loss",
+			description = "If enabled, show filter total as a profit/loss. If disabled, show gross gp traded.",
+			section = SECTION_GENERAL
+	)
+	default boolean getFilterTotalType()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 			keyName = ConfigKey.USE_24_HOUR_TIME,
 			name = "Display 24-hour time",
 			description = "If enabled, displays 13:00 instead of 1:00 pm",
