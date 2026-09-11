@@ -30,11 +30,13 @@ public class StringUtils
 	public static String quantityToRSDecimalStackLong(long quantity, boolean precise)
 	{
 		final String quantityStr = QuantityFormatter.formatNumber(quantity);
-		if (quantityStr.length() <= 8 )
+		if (quantityStr.length() <= 6 || (quantity < 0 && quantityStr.length() == 7))
 		{
-			return QuantityFormatter.formatNumber(quantity);
+			return quantityStr;
 		}
-		return QuantityFormatter.quantityToStackSize(quantity);
+		final int power = (int) Math.log10(Math.abs(quantity));
+		final NumberFormat numberFormat = precise && power >= 6 ? PRECISE_DECIMAL_FORMATTER : DECIMAL_FORMATTER;
+		return numberFormat.format(quantity / (Math.pow(10, power - power % 3))) + QUANTITY_SUFFIXES[power / 3];
 	}
 
 	public static Gson getGsonBuilder()
