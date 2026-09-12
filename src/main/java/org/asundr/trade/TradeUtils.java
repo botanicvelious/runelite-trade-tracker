@@ -1,5 +1,6 @@
 package org.asundr.trade;
 
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.gameval.ItemID;
 import net.runelite.client.game.ItemManager;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
+@Slf4j
 final public class TradeUtils
 {
 	private final static HashMap<Integer, CachedItemComposition> itemCompositionMap = new HashMap<>();
@@ -159,6 +161,27 @@ final public class TradeUtils
 			}
 		}
 		return true;
+	}
+
+
+	// Returns a map of item IDs to the aggregate quantity of items with that id in the passed collection
+	public static HashMap<Integer, Long> getItemCountsNoGP(final Collection<TradeItemData> items)
+	{
+		final HashMap<Integer, Long> counts = new HashMap<>();
+		for (final TradeItemData item : items)
+		{
+			final int id = item.getUnnotedID();
+			log.debug("{} id", id);
+			if (id != 995)
+			{
+				Long count = counts.getOrDefault(id, 0L);
+				counts.put(id, count + item.getQuantity());
+			} else {
+				Long count = counts.getOrDefault(id, 0L);
+				counts.put(id, count);
+			}
+		}
+		return counts;
 	}
 
 	// Returns a map of item IDs to the aggregate quantity of items with that id in the passed collection

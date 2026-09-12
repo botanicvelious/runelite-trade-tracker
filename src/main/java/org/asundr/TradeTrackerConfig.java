@@ -133,14 +133,16 @@ public interface TradeTrackerConfig extends Config
 
 	@ConfigItem(
 			keyName = ConfigKey.TOTAL_TYPE,
-			name = "Show total as profit/loss",
-			description = "If enabled, show filter total as a profit/loss. If disabled, show gross gp traded.",
-			section = SECTION_GENERAL
+			name = "Type of filter total to display",
+			description = "Displays different totals in filter panel." +
+					"<br>- Profit: Total profit of all trades" +
+					"<br>- Grand Total: Gross total value of all trades" +
+					"<br>- Item Qty Diff: Total items given - received" +
+					"<br>- Item Qty Total: Total quantity of items traded",
+			section = SECTION_GENERAL,
+			position = -10
 	)
-	default boolean getFilterTotalType()
-	{
-		return true;
-	}
+	default FilterTotalType getFilterTotalType() { return FilterTotalType.PROFIT;}
 
 	@ConfigItem(
 			keyName = ConfigKey.USE_24_HOUR_TIME,
@@ -281,6 +283,14 @@ public interface TradeTrackerConfig extends Config
 		EMPTY,
 		INACTIVE,
 		INACTIVE_EMPTY //
+	}
+
+	enum FilterTotalType
+	{
+		PROFIT, //
+		GRAND_TOTAL,
+		ITEM_QTY_DIFF,
+		ITEM_QTY_TOTAL
 	}
 
 	enum ItemPriceType

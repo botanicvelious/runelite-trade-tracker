@@ -25,12 +25,17 @@
 
 package org.asundr.trade;
 
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
 import org.asundr.utility.CommonUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import static java.lang.System.currentTimeMillis;
+
+@Slf4j
 // Contains all data to describe a trade between players
 public class TradeData
 {
@@ -41,6 +46,8 @@ public class TradeData
 	transient public long givenTotalValue = 0L;                             // aggregate grand exchange value of given items in coins at the time of trade
 	transient public long receivedTotalValue = 0L;                          // aggregate grand exchange value of received items in coins at the time of trade
 	public String note = "";                                        // player-authored note
+	transient public long givenItemsTraded = 0L;                                        // total items given
+	transient public long receivedItemsTraded = 0L;                                        // total items received
 
 	// Refreshes the tracked items of this player, or the traded player by querying their respective trade container
 	public void updateItems(boolean isCurrentPlayer, ItemContainer itemContainer)
@@ -61,9 +68,30 @@ public class TradeData
 		}
 	}
 
+	// Calculates the total quantity of items traded not value minus coins
+	public void calculateTotalItems()
+	{
+		// query cumulative item quantities (if simple trade, this has already been done)
+		final HashMap<Integer, Long> givenItemCountSums = TradeUtils.getItemCountsNoGP(givenItems);
+		long givenSum = givenItemCountSums.values().stream()
+				.mapToLong(Long::longValue)
+				.sum();
+
+		final HashMap<Integer, Long> receivedItemCountSums = TradeUtils.getItemCountsNoGP(receivedItems);
+		long receivedSum = receivedItemCountSums.values().stream()
+				.mapToLong(Long::longValue)
+				.sum();
+
+		givenItemsTraded = givenSum;
+		receivedItemsTraded = receivedSum;
+		// log.debug("{} givenSum", givenSum);
+		// log.debug("{} receivedSum", receivedSum);
+	}
+
 	// Calculates the total value of items given and received. Should only be called after ge prices for all items have been fetched.
 	public void calculateAggregateValues()
 	{
+		this.calculateTotalItems();
 		givenTotalValue = TradeUtils.totalConfiguredValue(givenItems);
 		receivedTotalValue = TradeUtils.totalConfiguredValue(receivedItems);
 	}
@@ -79,7 +107,7 @@ public class TradeData
 		{
 			return false;
 		}
-		return tradeTime * 1000L + CommonUtils.getRecordLifetime() < System.currentTimeMillis();
+		return tradeTime * 1000L + CommonUtils.getRecordLifetime() < currentTimeMillis();
 	}
 
 }

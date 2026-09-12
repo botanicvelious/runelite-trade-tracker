@@ -353,6 +353,18 @@ class TradeRecordPanel extends CollapsiblePanel
 		return tradeData.receivedTotalValue - tradeData.givenTotalValue;
 	}
 
+	// Get panel quantity.
+	public long getPanelQuantity()
+	{
+		return tradeData.receivedItemsTraded - tradeData.givenItemsTraded;
+	}
+
+	// Get panel quantity.
+	public long getPanelSum()
+	{
+		return tradeData.receivedItemsTraded + tradeData.givenItemsTraded;
+	}
+
 	// Updates the aggregate item prices after changing price type
 	public void updateItemPriceType()
 	{

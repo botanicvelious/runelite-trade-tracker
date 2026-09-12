@@ -664,26 +664,45 @@ public class TradeTrackerPluginPanel extends PluginPanel
 		long sum;
 		String footerPrefix = "";
 
-		if (CommonUtils.getConfig().getFilterTotalType()) {
+		if (CommonUtils.getConfig().getFilterTotalType() == TradeTrackerConfig.FilterTotalType.PROFIT) {
 			sum = getTradeRecordPanels().stream()
 					.filter(TradeRecordPanel::isVisible)
 					.mapToLong(TradeRecordPanel::getPanelValue)
 					.sum();
 
 			footerPrefix = sum < 0 ? "you lost" : "you gained";
+			filterTotalLabel = new QuantityLabel(sum, "<html>" + "In total " + footerPrefix + ": %s  <span style='color:#909090'>[#P]</span></html>", "%s");
 
-		} else
-		{
+		} else if (CommonUtils.getConfig().getFilterTotalType() == TradeTrackerConfig.FilterTotalType.GRAND_TOTAL) {
 			sum = getTradeRecordPanels().stream()
 					.filter(TradeRecordPanel::isVisible)
 					.mapToLong(TradeRecordPanel::getPanelValue)
 					.map(Math::abs)
 					.sum();
 
-			footerPrefix = "you traded";
+			filterTotalLabel = new QuantityLabel(sum, "<html>" + "In total you traded: %s  <span style='color:#909090'>[#P]</span></html>", "%s");
+		} else if (CommonUtils.getConfig().getFilterTotalType() == TradeTrackerConfig.FilterTotalType.ITEM_QTY_DIFF) {
+			sum = getTradeRecordPanels().stream()
+					.filter(TradeRecordPanel::isVisible)
+					.mapToLong(TradeRecordPanel::getPanelQuantity)
+					.sum();
+
+			footerPrefix = sum < 0 ? "you lost" : "you gained";
+			filterTotalLabel = new QuantityLabel(sum, "<html>" + "In total " + footerPrefix + ": %s items</html>", "%s");
+
+		} else if (CommonUtils.getConfig().getFilterTotalType() == TradeTrackerConfig.FilterTotalType.ITEM_QTY_TOTAL) {
+			sum = getTradeRecordPanels().stream()
+					.filter(TradeRecordPanel::isVisible)
+					.mapToLong(TradeRecordPanel::getPanelSum)
+					.map(Math::abs)
+					.sum();
+
+			filterTotalLabel = new QuantityLabel(sum, "<html>" + "In total you traded: %s  items </html>", "%s");
+		} else {
+			sum = 0;
 		}
 
-		filterTotalLabel = new QuantityLabel(sum, "<html>" + "In total " + footerPrefix + ": %s  <span style='color:#909090'>[#P]</span></html>", "%s");
+
 		filterTotal.removeAll();
 		filterTotal.add(filterTotalLabel);
 
