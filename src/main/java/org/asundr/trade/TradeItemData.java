@@ -78,7 +78,7 @@ public class TradeItemData
 		return ge;
 	}
 
-	public void setGEValue(final int value)
+	public void setGEValue(final long value, boolean override)
 	{
 		setGEValue(value, false);
 	}

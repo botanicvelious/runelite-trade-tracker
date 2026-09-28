@@ -66,7 +66,7 @@ final public class TradeUtils
 
 	// Returns the price of the item with the passed ID
 	// Note: Should be called via clientThread.invokeLater()
-	public static int fetchItemGePrice(final int itemID)
+	public static long fetchItemGePrice(final int itemID)
 	{
 		return itemManager.getItemPrice(itemID);
 	}
@@ -77,7 +77,7 @@ final public class TradeUtils
 	{
 		for (TradeItemData itemData : itemDataList)
 		{
-			itemData.setGEValue(fetchItemGePrice(itemData.getUnnotedID()));
+			itemData.setGEValue(fetchItemGePrice(itemData.getUnnotedID()), false);
 		}
 	}
 
