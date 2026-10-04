@@ -155,7 +155,7 @@ class ItemLabel extends JLabel
 							copyHATotal.addActionListener(evt -> StringUtils.copyToClipboard(Long.toString((long) popupItemData.getHaValue() * getTrueQuantity())));
 							copyPriceSubmenu.add(copyHATotal);
 							final JMenuItem copyGEPrice = new JMenuItem(TEXT_MENU_PRICE_GE);
-							copyGEPrice.addActionListener(evt -> StringUtils.copyToClipboard(Integer.toString(popupItemData.getGEValue())));
+							copyGEPrice.addActionListener(evt -> StringUtils.copyToClipboard(Long.toString(popupItemData.getGEValue())));
 							copyPriceSubmenu.add(copyGEPrice);
 							final JMenuItem copyGETotal = new JMenuItem(TEXT_MENU_PRICE_TOTAL_GE);
 							copyGETotal.addActionListener(evt -> StringUtils.copyToClipboard(Long.toString((long) popupItemData.getGEValue() * getTrueQuantity())));
@@ -190,7 +190,7 @@ class ItemLabel extends JLabel
 							filterHaTotal.addActionListener(evt -> GuiUtils.setFilterAndEnabled(Long.toString((long) popupItemData.getHaValue() * getTrueQuantity())));
 							filterPricesSubmenu.add(filterHaTotal);
 							final JMenuItem filterGEPrice = new JMenuItem(TEXT_MENU_PRICE_GE);
-							filterGEPrice.addActionListener(evt -> GuiUtils.setFilterAndEnabled(Integer.toString(popupItemData.getGEValue())));
+							filterGEPrice.addActionListener(evt -> GuiUtils.setFilterAndEnabled(Long.toString(popupItemData.getGEValue())));
 							filterPricesSubmenu.add(filterGEPrice);
 							final JMenuItem filterGETotal = new JMenuItem(TEXT_MENU_PRICE_TOTAL_GE);
 							filterGETotal.addActionListener(evt -> GuiUtils.setFilterAndEnabled(Long.toString((long) popupItemData.getGEValue() * getTrueQuantity())));

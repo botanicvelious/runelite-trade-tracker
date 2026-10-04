@@ -31,9 +31,9 @@ public class TradeItemData
 	private final int id;                   // original id (may be noted)
 	private final int num;                  // the item quantity
 	private transient int unnotedId = 0;    // Optional unnoted id if this.id is noted. Dwarf remains (id=0) can never be noted so this should be ok
-	private int ge;                    // this is the GE value at the time of the trade and should not be updated
+	private long ge;                    // this is the GE value at the time of the trade and should not be updated
 
-	TradeItemData(int id, int quantity, int value)
+	TradeItemData(int id, int quantity, long value)
 	{
 		this.id = id;
 		this.num = quantity;
@@ -73,12 +73,12 @@ public class TradeItemData
 		return num;
 	}
 
-	public final int getGEValue()
+	public final long getGEValue()
 	{
 		return ge;
 	}
 
-	public void setGEValue(final long value, boolean override)
+	public void setGEValue(final long value)
 	{
 		setGEValue(value, false);
 	}
@@ -93,12 +93,12 @@ public class TradeItemData
 		return TradeUtils.getLaPrice(getUnnotedID());
 	}
 
-	public final int getConfiguredValue()
+	public final long getConfiguredValue()
 	{
 		return TradeUtils.getConfiguredPrice(this);
 	}
 
-	private void setGEValue(final int value, final boolean override)
+	public void setGEValue(final long value, final boolean override)
 	{
 		if (ge == -1 || override)
 		{

@@ -509,7 +509,7 @@ class TradeRecordPanel extends CollapsiblePanel
 					}
 					if (Integer.toString(item.getQuantity()).startsWith(query))
 						return true;
-					if (Integer.toString(item.getGEValue()).startsWith(query))
+					if (Long.toString(item.getGEValue()).startsWith(query))
 						return true;
 					if (Integer.toString(item.getLaValue()).startsWith(query))
 						return true;

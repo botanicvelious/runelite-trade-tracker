@@ -50,7 +50,7 @@ final public class TradeUtils
 	}
 
 	// Returns either the GE price at the time of the trade, or the cached HA / LA price
-	public static int getConfiguredPrice(final TradeItemData itemData)
+	public static long getConfiguredPrice(final TradeItemData itemData)
 	{
 		switch (CommonUtils.getConfig().getDefaultPriceType())
 		{
