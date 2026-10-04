@@ -50,6 +50,8 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
+import static java.lang.System.currentTimeMillis;
+
 @Slf4j
 public class TradeManager
 {
@@ -356,7 +358,7 @@ public class TradeManager
 			return;
 		}
 		final long expireTime = tradeHistory.getFirst().tradeTime * 1000L + lifetime;
-		final long destroyDelay = Math.max(1000, expireTime - System.currentTimeMillis());
+		final long destroyDelay = Math.max(1000, expireTime - currentTimeMillis());
 		scheduledPurgeFuture = scheduler.schedule(this::removeExpiredRecords, destroyDelay, TimeUnit.MILLISECONDS);
 		//log.debug("Scheduled to remove expired trade at: " + TradeUtils.timeStampToString(expireTime/1000));
 	}

@@ -37,8 +37,6 @@ import org.asundr.trade.*;
 import org.asundr.utility.CommonUtils;
 import org.asundr.utility.StringUtils;
 import org.asundr.utility.TimeUtils;
-import org.asundr.trade.TradeData;
-import org.asundr.trade.TradeUtils;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -662,7 +660,7 @@ public class TradeTrackerPluginPanel extends PluginPanel
 	private void updateTotalPanel()
 	{
 		long sum;
-		String footerPrefix = "";
+		String footerPrefix;
 
 		if (CommonUtils.getConfig().getFilterTotalType() == TradeTrackerConfig.FilterTotalType.PROFIT) {
 			sum = getTradeRecordPanels().stream()
@@ -699,7 +697,6 @@ public class TradeTrackerPluginPanel extends PluginPanel
 
 			filterTotalLabel = new QuantityLabel(sum, "<html>" + "In total you traded: %s  items </html>", "%s");
 		} else {
-			sum = 0;
 		}
 
 

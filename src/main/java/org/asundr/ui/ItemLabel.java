@@ -92,7 +92,7 @@ class ItemLabel extends JLabel
 						QuantityFormatter.formatNumber(getTrueQuantity()),
 						QuantityFormatter.formatNumber(itemData.getGEValue()),
 						QuantityFormatter.formatNumber(itemData.getHaValue()),
-						QuantityFormatter.formatNumber((long) itemData.getConfiguredValue() * getTrueQuantity()) + " [" + CommonUtils.getConfig().getDefaultPriceType().shortName + "]"
+						QuantityFormatter.formatNumber(itemData.getConfiguredValue() * getTrueQuantity()) + " [" + CommonUtils.getConfig().getDefaultPriceType().shortName + "]"
 				);
 				setToolTipText(tipStr);
 			}
@@ -158,7 +158,7 @@ class ItemLabel extends JLabel
 							copyGEPrice.addActionListener(evt -> StringUtils.copyToClipboard(Long.toString(popupItemData.getGEValue())));
 							copyPriceSubmenu.add(copyGEPrice);
 							final JMenuItem copyGETotal = new JMenuItem(TEXT_MENU_PRICE_TOTAL_GE);
-							copyGETotal.addActionListener(evt -> StringUtils.copyToClipboard(Long.toString((long) popupItemData.getGEValue() * getTrueQuantity())));
+							copyGETotal.addActionListener(evt -> StringUtils.copyToClipboard(Long.toString(popupItemData.getGEValue() * getTrueQuantity())));
 							copyPriceSubmenu.add(copyGETotal);
 							copySubmenu.add(copyPriceSubmenu);
 							copyId.addActionListener(evt -> StringUtils.copyToClipboard(Integer.toString(popupItemData.getID())));
@@ -193,7 +193,7 @@ class ItemLabel extends JLabel
 							filterGEPrice.addActionListener(evt -> GuiUtils.setFilterAndEnabled(Long.toString(popupItemData.getGEValue())));
 							filterPricesSubmenu.add(filterGEPrice);
 							final JMenuItem filterGETotal = new JMenuItem(TEXT_MENU_PRICE_TOTAL_GE);
-							filterGETotal.addActionListener(evt -> GuiUtils.setFilterAndEnabled(Long.toString((long) popupItemData.getGEValue() * getTrueQuantity())));
+							filterGETotal.addActionListener(evt -> GuiUtils.setFilterAndEnabled(Long.toString(popupItemData.getGEValue() * getTrueQuantity())));
 							filterPricesSubmenu.add(filterGETotal);
 							filterSubmenu.add(filterPricesSubmenu);
 

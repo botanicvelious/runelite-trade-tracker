@@ -119,7 +119,7 @@ final public class TradeUtils
 	// Evaluates the aggregate Grand Exchange value of all passed item stacks
 	public static long totalConfiguredValue(final Collection<TradeItemData> items)
 	{
-		return items.stream().reduce(0L, (acc, item) -> acc + ((long) item.getConfiguredValue() * (long) item.getQuantity()), Long::sum);
+		return items.stream().reduce(0L, (acc, item) -> acc + (item.getConfiguredValue() * (long) item.getQuantity()), Long::sum);
 	}
 
 	// Returns true if the only items in the passed collection currency such as coins or platinum

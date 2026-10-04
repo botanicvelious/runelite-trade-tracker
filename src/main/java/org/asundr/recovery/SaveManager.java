@@ -216,7 +216,7 @@ public class SaveManager
 			final SaveData_Profile saveData = gson.fromJson(json, SaveData_Profile.class);
 			if (saveData == null)
 			{
-				log.error("Failed to parse trade history json");
+				log.error("Failed to get trade history json");
 				return;
 			}
 			String decompressedHistory = CompressionUtils.decompressFromEncode(saveData.encodedTradeHistory);

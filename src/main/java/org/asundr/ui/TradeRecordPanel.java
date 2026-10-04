@@ -390,18 +390,17 @@ class TradeRecordPanel extends CollapsiblePanel
 			return true;
 
 		// check for - for day/week/month
-		if (query != null && !query.isEmpty())
+		if (!query.isEmpty())
 		{
 			char firstChar = query.charAt(0);
 			if (firstChar == '-')
 			{
 				String digits = query.replaceAll("[^0-9]", "");
-				long number = 0;
-				if (digits != null && !digits.isEmpty())
+				long number;
+				if (!digits.isEmpty())
 				{
 					number = Integer.parseInt(digits);
 				} else {
-					number = 0;
 				}
 				if (number > 0)
 				{
