@@ -77,7 +77,7 @@ final public class TradeUtils
 	{
 		for (TradeItemData itemData : itemDataList)
 		{
-			itemData.setGEValue(fetchItemGePrice(itemData.getUnnotedID()), false);
+			itemData.setGEValue(fetchItemGePrice(itemData.getUnnotedID()));
 		}
 	}
 
