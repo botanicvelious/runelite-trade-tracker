@@ -84,8 +84,6 @@ public class TradeData
 
 		givenItemsTraded = givenSum;
 		receivedItemsTraded = receivedSum;
-		// log.debug("{} givenSum", givenSum);
-		// log.debug("{} receivedSum", receivedSum);
 	}
 
 	// Calculates the total value of items given and received. Should only be called after ge prices for all items have been fetched.

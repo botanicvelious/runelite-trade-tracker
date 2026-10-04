@@ -56,10 +56,6 @@ public class SaveData_Common
 
 	public void setActiveProfile(final TradeHistoryProfile activeProfile)
 	{
-		//if (this.activeProfile.equals(activeProfile))
-		//{
-		//	return;
-		//}
 		if (activeProfile != null)
 		{
 			final int existingIndex = savedProfiles.indexOf(activeProfile);

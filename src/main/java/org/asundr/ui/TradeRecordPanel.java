@@ -407,11 +407,6 @@ class TradeRecordPanel extends CollapsiblePanel
 					char lastChar = query.charAt(query.length() - 1);
 					if (lastChar == 'd')
 					{
-						//System.out.println("Query numb: " + number);
-						//System.out.println("Query date: " + (Instant.now().getEpochSecond() - (1000*60*60*24*number)));
-						//System.out.println("now date  : " + Instant.now().getEpochSecond());
-						//System.out.println("trade date: " + tradeData.tradeTime);
-						//System.out.println("ofset date: " + (1000*60*60*24*number));
 						if ((Instant.now().getEpochSecond() - (60*60*24*number)) <= tradeData.tradeTime)
 						{
 							return true;
@@ -436,8 +431,6 @@ class TradeRecordPanel extends CollapsiblePanel
 					.withResolverStyle(ResolverStyle.STRICT);
 			LocalDate parsedDate = LocalDate.parse(query, formatter);
 			TimeUtils.timestampToString(tradeData.tradeTime, "MM/dd/uuuu");
-			//System.out.println("Query date: " + query);
-			//System.out.println("Trade date: " + TimeUtils.timestampToString(tradeData.tradeTime, "MM/dd/uuuu"));
 			if (query.equals(TimeUtils.timestampToString(tradeData.tradeTime, "MM/dd/uuuu")))
 			{
 				return true;
