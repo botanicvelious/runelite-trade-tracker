@@ -216,7 +216,7 @@ public class TradeTrackerPluginPanel extends PluginPanel
 		titleLabel.setBorder(BORDER_EMPTY);
 		titleWrapper.add(titleLabel);
 		titleWrapper.setBackground(COLOR_HEADER_BACKGROUND);
-		titleLabel.setToolTipText("Created by asundr");
+		titleLabel.setToolTipText("Created by botanicvelious");
 		titleWrapper.setBorder(BORDER_EMPTY);
 		titleWrapper.setPreferredSize(new Dimension(PANEL_WIDTH, 20));
 		headerPanel.add(titleWrapper, CENTER_ALIGNMENT);

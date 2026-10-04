@@ -32,17 +32,4 @@ Simple exchanges of coins for a single type of item are summarized to display ho
 
 <hr>
 
-### My RuneLite plugins
-
-- [Trade Tracker](https://runelite.net/plugin-hub/show/trade-tracker) - Records a detailed, searchable history of past
-  trades with other players
-- [Offer at Price](https://runelite.net/plugin-hub/show/offer-at-price) - SHIFT-right click an item to offer a matching
-  quantity for a provided price
-- [Smithing MisClick Prevention](https://runelite.net/plugin-hub/show/offer-at-price) - Prevents accidentally clicking
-  on unintended items in the smithing menu
-- [Ring of Forging Helper](https://runelite.net/plugin-hub/show/ring-of-forging-helper) - Provides customizable feedback
-  to make smithing with the Ring of Forging more afk
-- [Chat Space Blocker](https://runelite.net/plugin-hub/show/chat-space-blocker) - Prevents players from entering spaces
-  as the first character of chat input
-- [Trade Highlighter](https://runelite.net/plugin-hub/show/trade-highlighter) - Highlights configurable items in the
-  player trade menu. Useful for scam prevention.
+*Originally created by asundr*
