@@ -28,7 +28,7 @@ package org.asundr.trade;
 // contains data used to describe an item stack at the time of a trade
 public class TradeItemData
 {
-	private final int id;                   // original id (may be noted)
+	private final int id;                   // original id (maybe noted)
 	private final int num;                  // the item quantity
 	private transient int unnotedId = 0;    // Optional unnoted id if this.id is noted. Dwarf remains (id=0) can never be noted so this should be ok
 	private long ge;                    // this is the GE value at the time of the trade and should not be updated

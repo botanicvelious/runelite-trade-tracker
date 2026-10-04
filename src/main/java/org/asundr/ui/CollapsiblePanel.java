@@ -68,7 +68,7 @@ class CollapsiblePanel extends JPanel
 		return !isExpanded;
 	}
 
-	// Explicitly set the collapsed state. Does nothing if already in the passed state
+	// Explicitly set the collapsed state. Does nothing if already in the state
 	public void setCollapsed(boolean newCollapsed)
 	{
 		if (newCollapsed == !isExpanded)

@@ -110,7 +110,7 @@ final public class TradeUtils
 		return itemManager.getImage(itemId, quantity, stackable);
 	}
 
-	// Returns the aggregate quantity of all items with the specified ID in the passed item collection
+	// Returns the aggregate quantity of all items with the specified ID of the passed item collection
 	public static long getTotalItemQuantity(final Collection<TradeItemData> items, int id)
 	{
 		return items.stream().filter(i -> i.getUnnotedID() == id).reduce(0L, (a, i) -> a + i.getQuantity(), Long::sum);

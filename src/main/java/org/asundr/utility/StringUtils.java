@@ -44,7 +44,7 @@ public class StringUtils
 		return gson.newBuilder().create();
 	}
 
-	// Converts the passed object to a json string
+	// Converts the passed object to a JSON string
 	public static <T> String stringify(T object)
 	{
 		return gson.newBuilder().create().toJson(object);
