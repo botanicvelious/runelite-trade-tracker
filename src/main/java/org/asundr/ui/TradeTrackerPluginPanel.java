@@ -696,9 +696,7 @@ public class TradeTrackerPluginPanel extends PluginPanel
 					.sum();
 
 			filterTotalLabel = new QuantityLabel(sum, "<html>" + "In total you traded: %s  items </html>", "%s");
-		} else {
 		}
-
 
 		filterTotal.removeAll();
 		filterTotal.add(filterTotalLabel);

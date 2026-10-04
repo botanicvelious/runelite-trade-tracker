@@ -401,6 +401,7 @@ class TradeRecordPanel extends CollapsiblePanel
 				{
 					number = Integer.parseInt(digits);
 				} else {
+					number = 0;
 				}
 				if (number > 0)
 				{
